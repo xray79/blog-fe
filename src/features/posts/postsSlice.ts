@@ -28,7 +28,6 @@ const initialState: initialStateType = {
   message: "",
 };
 
-// Get all posts
 export const getPosts = createAsyncThunk(
   "/posts/getAll",
   async (_, thunkAPI) => {
@@ -48,7 +47,6 @@ export const getPosts = createAsyncThunk(
   }
 );
 
-// Get my posts
 export const getMyPosts = createAsyncThunk(
   "/posts/getMy",
   async (_, thunkAPI) => {
@@ -68,7 +66,6 @@ export const getMyPosts = createAsyncThunk(
   }
 );
 
-// Create new post
 export const createPost = createAsyncThunk(
   "posts/create",
   async (postData: any, thunkAPI) => {
@@ -108,7 +105,6 @@ export const createPost = createAsyncThunk(
 //   }
 // );
 
-// Delete post
 export const deletePost = createAsyncThunk(
   "posts/delete",
   async (id: string, thunkAPI) => {

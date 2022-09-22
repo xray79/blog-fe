@@ -1,14 +1,11 @@
-import { Container, Form, Button } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { reset } from "../features/posts/postsSlice";
+import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
 
 const PostForm = ({ id }: any) => {
   const [Post, setPost] = useState({
     title: "",
     body: "",
   });
-  const dispatch = useAppDispatch();
 
   const { title, body } = Post;
 
@@ -21,7 +18,6 @@ const PostForm = ({ id }: any) => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    // dispatch(editPost(Post, id));
     setPost({
       title: "",
       body: "",

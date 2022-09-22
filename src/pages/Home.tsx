@@ -45,6 +45,7 @@ export default function Home() {
           <img
             className="w-50 img-fluid"
             src={"/undraw_dreamer_re_9tua.svg"}
+            alt=""
             width={"500px"}
             height={"500px"}
           />
@@ -220,6 +221,7 @@ export default function Home() {
             <img
               className=""
               src={"/diary.svg"}
+              alt=""
               width={"500px"}
               height={"500px"}
             />
@@ -271,6 +273,7 @@ export default function Home() {
             <img
               className=""
               src={"/article.svg"}
+              alt=""
               width={"500px"}
               height={"500px"}
             />

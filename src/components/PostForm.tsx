@@ -1,7 +1,7 @@
-import { Container, Form, Button } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { createPost, reset } from "../features/posts/postsSlice";
+import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { useAppDispatch } from "../app/hooks";
+import { createPost } from "../features/posts/postsSlice";
 
 const PostForm = () => {
   const [Post, setPost] = useState({

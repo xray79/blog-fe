@@ -1,17 +1,16 @@
 import { Container, Spinner } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
 import PostForm from "../components/PostForm";
-import { getMyPosts, reset } from "../features/posts/postsSlice";
+import { getPosts, reset } from "../features/posts/postsSlice";
 import PostItem from "../components/PostItem";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router";
-import EditModal from "../components/EditModal";
 
 const MyPosts = () => {
   const { user } = useAppSelector((state) => state.auth);
-  const { myPosts, isLoading, isError, message } = useAppSelector(
+  const { posts, isLoading, isError, isSuccess, message } = useAppSelector(
     (state) => state.posts
   );
   const dispatch = useAppDispatch();
@@ -26,7 +25,7 @@ const MyPosts = () => {
       return;
     }
 
-    dispatch(getMyPosts());
+    dispatch(getPosts());
 
     return () => {
       dispatch(reset());
@@ -37,12 +36,11 @@ const MyPosts = () => {
     <div>
       <Navbar />
 
-      <Container className="">
+      <Container>
         <h1 className="display-6 mt-4 text-success">{user?.name}'s posts</h1>
         <h3 className="display-7 text-success mb-4">
           Your posts are here, create a new one below
         </h3>
-
         <PostForm />
       </Container>
 
@@ -51,9 +49,12 @@ const MyPosts = () => {
           <Spinner animation="border" />
         ) : (
           <div>
-            {myPosts.map((post, i) => (
-              <PostItem key={i} post={post} user={user} />
-            ))}
+            {posts.map(
+              (post, i) =>
+                post.user === user?._id && (
+                  <PostItem key={i} post={post} user={user} />
+                )
+            )}
           </div>
         )}
       </Container>
