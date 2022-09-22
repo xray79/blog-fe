@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { Container, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { loginUser, registerUser, reset } from "../features/auth/authSlice";
+import { loginUser, reset } from "../features/auth/authSlice";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router";
 
@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, dispatch]); //router
+  }, [user, isError, isSuccess, message, dispatch, navigate]); //router
 
   // allow rewrite form data
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,9 +90,9 @@ const Login = () => {
             />
           </Form.Group>
 
-          {isError ? (
+          {isLoading ? (
             <p className="text-danger text-center">
-              Incorrect username or password
+              Load times may be high due to use of free Render plan
             </p>
           ) : (
             ""
